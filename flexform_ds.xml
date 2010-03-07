@@ -1,0 +1,29 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<general>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.sheet_general</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<captions>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.captions</label>
+							<config>
+								<type>text</type>
+								<wrap>OFF</wrap>
+								<cols>48</cols>
+								<rows>6</rows>
+							</config>
+						</TCEforms>
+					</captions>
+				</el>
+			</ROOT>
+		</general>
+	</sheets>
+</T3DataStructure>

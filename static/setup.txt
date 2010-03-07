@@ -1,0 +1,65 @@
+plugin.tx_buymeabeer_pi1 {
+	donateUrl = {$plugin.tx_buymeabeer_pi1.donateUrl}
+	business = {$plugin.tx_buymeabeer_pi1.business}
+	currencyCode = {$plugin.tx_buymeabeer_pi1.currencyCode}
+	amount = {$plugin.tx_buymeabeer_pi1.amount}
+	returnUrl = {$plugin.tx_buymeabeer_pi1.returnUrl}
+	itemName = {$plugin.tx_buymeabeer_pi1.itemName}
+	donateText = {$plugin.tx_buymeabeer_pi1.donateText}
+
+	template {
+		typolink {
+			parameter.cObject = COA
+			parameter.cObject {
+				10 = TEXT
+				10.data = register:donateUrl
+	
+				20 = TEXT
+				20.data = register:business
+				20.wrap = &business=|
+	
+				30 = TEXT
+				30.data = register:currencyCode
+				30.wrap = &currency_code=|
+	
+				40 = TEXT
+				40.data = register:amount
+				40.wrap = &amount=|
+	
+				50 = COA
+				50 {
+					10 = TEXT
+					10.data = getIndpEnv:TYPO3_SITE_URL
+					10.rawUrlEncode = 1
+					20 = TEXT
+					20.typolink {
+						enable = 1
+						parameter.data = register:returnUrl
+						returnLast = url
+					}
+					20.rawUrlEncode = 1
+					wrap = &return=|
+				}
+	
+				60 = TEXT
+				60.data = register:itemName
+				60.rawUrlEncode = 1
+				60.wrap = &item_name=|
+			}
+		}
+		innerStdWrap {
+			dataWrap = <strong>{register:donateText}|</strong>
+		}
+		stdWrap {
+			dataWrap = <div class="buymeabeer">|</div>
+		}
+	}
+	_CSS_DEFAULT_STYLE (
+.buymeabeer {  }
+.buymeabeer a {
+  display: block;
+  padding: 5px 5px 5px 64px;
+  background: transparent url(../typo3conf/ext/buymeabeer/res/images/beer.png) no-repeat 0 0;
+}
+	)
+}
