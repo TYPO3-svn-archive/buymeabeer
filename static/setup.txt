@@ -51,15 +51,16 @@ plugin.tx_buymeabeer_pi1 {
 			dataWrap = <strong>{register:donateText}|</strong>
 		}
 		stdWrap {
-			dataWrap = <div class="buymeabeer">|</div>
+			dataWrap = |
 		}
 	}
 	_CSS_DEFAULT_STYLE (
-.buymeabeer {  }
-.buymeabeer a {
+.tx-buymeabeer-pi1 {  }
+.tx-buymeabeer-pi1 a {
   display: block;
   padding: 5px 5px 5px 64px;
   background: transparent url(../typo3conf/ext/buymeabeer/res/images/beer.png) no-repeat 0 0;
+  height: 64px;
 }
 	)
 }

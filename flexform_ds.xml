@@ -10,18 +10,74 @@
 				</TCEforms>
 				<type>array</type>
 				<el>
-					<captions>
+					<business>
 						<TCEforms>
 							<exclude>1</exclude>
-							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.captions</label>
+							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.business</label>
+							<config>
+								<type>input</type>
+								<size>50</size>
+								<eval>email</eval>
+							</config>
+						</TCEforms>
+					</business>
+					<currencyCode>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.currencyCode</label>
+							<config>
+								<type>input</type>
+								<size>6</size>
+								<max>6</max>
+								<eval>string</eval>
+							</config>
+						</TCEforms>
+					</currencyCode>
+					<amount>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.amount</label>
+							<config>
+								<type>input</type>
+								<size>6</size>
+								<max>6</max>
+								<eval>string</eval>
+							</config>
+						</TCEforms>
+					</amount>
+					<returnUrl>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.returnUrl</label>
+							<config>
+								<type>input</type>
+								<size>50</size>
+								<eval>string</eval>
+							</config>
+						</TCEforms>
+					</returnUrl>
+					<itemName>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.itemName</label>
+							<config>
+								<type>input</type>
+								<size>50</size>
+								<eval>string</eval>
+							</config>
+						</TCEforms>
+					</itemName>
+					<donateText>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.donateText</label>
 							<config>
 								<type>text</type>
-								<wrap>OFF</wrap>
 								<cols>48</cols>
 								<rows>6</rows>
 							</config>
 						</TCEforms>
-					</captions>
+					</donateText>
 				</el>
 			</ROOT>
 		</general>
