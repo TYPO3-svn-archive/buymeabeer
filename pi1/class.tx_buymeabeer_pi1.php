@@ -74,24 +74,34 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 					}
 				}
 			}
-			// override the config if set in Plugin
-			if ($this->lConf['business']) {
+			if ($this->lConf['overrideSetup']) {
+				// Override all Config if the option is set
 				$this->conf['business'] = $this->lConf['business'];
-			}
-			if ($this->lConf['currencyCode']) {
 				$this->conf['currencyCode'] = $this->lConf['currencyCode'];
-			}
-			if ($this->lConf['amount'] > 0) {
 				$this->conf['amount'] = $this->lConf['amount'];
-			}
-			if ($this->lConf['returnUrl']) {
 				$this->conf['returnUrl'] = $this->lConf['returnUrl'];
-			}
-			if ($this->lConf['itemName']) {
 				$this->conf['itemName'] = $this->lConf['itemName'];
-			}
-			if ($this->lConf['donateText']) {
 				$this->conf['donateText'] = str_replace(chr(10), "<br/>", $this->lConf['donateText']);
+			} else {
+				// override the config if set in Plugin
+				if ($this->lConf['business']) {
+					$this->conf['business'] = $this->lConf['business'];
+				}
+				if ($this->lConf['currencyCode']) {
+					$this->conf['currencyCode'] = $this->lConf['currencyCode'];
+				}
+				if ($this->lConf['amount'] > 0) {
+					$this->conf['amount'] = $this->lConf['amount'];
+				}
+				if ($this->lConf['returnUrl']) {
+					$this->conf['returnUrl'] = $this->lConf['returnUrl'];
+				}
+				if ($this->lConf['itemName']) {
+					$this->conf['itemName'] = $this->lConf['itemName'];
+				}
+				if ($this->lConf['donateText']) {
+					$this->conf['donateText'] = str_replace(chr(10), "<br/>", $this->lConf['donateText']);
+				}
 			}
 		}
 

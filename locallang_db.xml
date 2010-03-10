@@ -14,6 +14,7 @@
 			<label index="tt_content.pi_flexform.returnUrl">Return URL after donation</label>
 			<label index="tt_content.pi_flexform.itemName">Name of the donation</label>
 			<label index="tt_content.pi_flexform.donateText">Donation text</label>
+			<label index="tt_content.pi_flexform.overrideSetup">Override setup width empty values</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="tt_content.list_type_pi1">Donate</label>
@@ -24,6 +25,7 @@
 			<label index="tt_content.pi_flexform.returnUrl">Aufruf nach der Spende</label>
 			<label index="tt_content.pi_flexform.itemName">Name der Spende</label>
 			<label index="tt_content.pi_flexform.donateText">Spenden Text</label>
+			<label index="tt_content.pi_flexform.overrideSetup">Setup überschreiben mit leeren Inhalten</label>
 		</languageKey>
 	</data>
 </T3locallang>

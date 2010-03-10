@@ -12,7 +12,7 @@ plugin.tx_buymeabeer_pi1 {
 	# cat=plugin.tx_buymeabeer/enable/040; type=int; label=Amount of donation
 	amount = 3
 
-	# cat=plugin.tx_buymeabeer/enable/050; type=string; label=Return URL after donation
+	# cat=plugin.tx_buymeabeer/enable/050; type=string; label=Return URL after donation: Will be used as parameter in typolink, so you can use site id's
 	returnUrl = 
 
 	# cat=plugin.tx_buymeabeer/enable/060; type=string; label=Name of the donation
