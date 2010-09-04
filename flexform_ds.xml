@@ -43,6 +43,29 @@
 							</config>
 						</TCEforms>
 					</currencyCode>
+					<!--
+					<currencyCode>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.currencyCode</label>
+							<config>
+								<type>select</type>
+								<items>
+								</items>
+								<itemsProcFunc>tx_staticinfotables_div->selectItemsTCA</itemsProcFunc>
+								<itemsProcFunc_config>
+									<table>static_currencies</table>
+									<where> AND cu_iso_3 IN (USD, EUR)</where>
+									<indexField>cu_iso_3</indexField>
+									<prependHotlist>1</prependHotlist>
+								</itemsProcFunc_config>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+							</config>
+						</TCEforms>
+					</currencyCode>
+					-->
 					<amount>
 						<TCEforms>
 							<exclude>1</exclude>
@@ -55,6 +78,44 @@
 							</config>
 						</TCEforms>
 					</amount>
+					<amounts>
+						<type>array</type>
+						<section>1</section>
+						<el>
+							<data>
+								<TCEforms>
+									<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.amount</label>
+								</TCEforms>
+								<type>array</type>
+								<el>
+									<value>
+										<TCEforms>
+											<exclude>1</exclude>
+											<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.amount_value</label>
+											<config>
+												<type>input</type>
+												<size>6</size>
+												<max>6</max>
+												<eval>integer</eval>
+											</config>
+										</TCEforms>
+									</value>
+									<label>
+										<TCEforms>
+											<exclude>1</exclude>
+											<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.amount_label</label>
+											<config>
+												<type>input</type>
+												<size>10</size>
+												<max>20</max>
+												<eval>string</eval>
+											</config>
+										</TCEforms>
+									</label>
+								</el>
+							</data>
+						</el>
+					</amounts>
 					<returnUrl>
 						<TCEforms>
 							<exclude>1</exclude>

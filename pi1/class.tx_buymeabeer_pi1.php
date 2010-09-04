@@ -70,54 +70,83 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 			foreach ($piFlexForm['data'] as $sheet => $data) {
 				foreach ($data as $lang => $value) {
 					foreach ($value as $key => $val) {
-						$this->lConf[$key] = $this->pi_getFFvalue($piFlexForm, $key, $sheet);
+						if ($key == 'amounts') {
+							// special for the amounts
+							$this->lConf['amounts'] = array();
+							if (is_array($val['el'])) {
+								foreach ($val['el'] as $amount) {
+									$this->lConf['amounts'][] = array(
+										'value'   => $amount['data']['el']['value']['vDEF'],
+										'label' => $amount['data']['el']['label']['vDEF'],
+									);
+								}
+							}
+						} else {
+							$this->lConf[$key] = $this->pi_getFFvalue($piFlexForm, $key, $sheet);
+						}
 					}
 				}
 			}
-			if ($this->lConf['overrideSetup']) {
-				// Override all Config if the option is set
+			// override the config if set in Plugin
+			if ($this->lConf['business'] || $this->isOverride() === true) {
 				$this->conf['business'] = $this->lConf['business'];
+			}
+			if ($this->lConf['currencyCode'] || $this->isOverride() === true) {
 				$this->conf['currencyCode'] = $this->lConf['currencyCode'];
+			}
+			if ($this->lConf['amount'] || $this->isOverride() === true) {
 				$this->conf['amount'] = $this->lConf['amount'];
+			}
+			if ($this->lConf['amounts'] || $this->isOverride() === true) {
+				$this->conf['amounts.'] = $this->lConf['amounts'];
+			}
+			if ($this->lConf['returnUrl'] || $this->isOverride() === true) {
 				$this->conf['returnUrl'] = $this->lConf['returnUrl'];
+			}
+			if ($this->lConf['itemName'] || $this->isOverride() === true) {
 				$this->conf['itemName'] = $this->lConf['itemName'];
-				$this->conf['donateText'] = str_replace(chr(10), "<br/>", $this->lConf['donateText']);
-			} else {
-				// override the config if set in Plugin
-				if ($this->lConf['business']) {
-					$this->conf['business'] = $this->lConf['business'];
-				}
-				if ($this->lConf['currencyCode']) {
-					$this->conf['currencyCode'] = $this->lConf['currencyCode'];
-				}
-				if ($this->lConf['amount'] > 0) {
-					$this->conf['amount'] = $this->lConf['amount'];
-				}
-				if ($this->lConf['returnUrl']) {
-					$this->conf['returnUrl'] = $this->lConf['returnUrl'];
-				}
-				if ($this->lConf['itemName']) {
-					$this->conf['itemName'] = $this->lConf['itemName'];
-				}
-				if ($this->lConf['donateText']) {
-					$this->conf['donateText'] = str_replace(chr(10), "<br/>", $this->lConf['donateText']);
-				}
+			}
+			if ($this->lConf['donateText'] || $this->isOverride() === true) {
+				$this->conf['donateText'] = nl2br($this->lConf['donateText']);
 			}
 		}
 
 		$GLOBALS['TSFE']->register['donateUrl']    = $this->conf['donateUrl'];
 		$GLOBALS['TSFE']->register['business']     = $this->conf['business'];
 		$GLOBALS['TSFE']->register['currencyCode'] = $this->conf['currencyCode'];
-		$GLOBALS['TSFE']->register['amount']       = $this->conf['amount'];
 		$GLOBALS['TSFE']->register['returnUrl']    = $this->conf['returnUrl'];
 		$GLOBALS['TSFE']->register['itemName']     = $this->conf['itemName'];
 		$GLOBALS['TSFE']->register['donateText']   = $this->conf['donateText'];
 
-		$inner   = $this->cObj->stdWrap("", $this->conf['template.']['innerStdWrap.']);
-		$link    = $this->cObj->typolink($inner, $this->conf['template.']['typolink.']);
-		$content = $this->cObj->stdWrap($link, $this->conf['template.']['stdWrap.']);
+		$markerArray = array(
+			'AMOUNTS' => null,
+		);
+		if (is_array($this->conf['amounts.'])) {
+			foreach ($this->conf['amounts.'] as $amount) {
+				$GLOBALS['TSFE']->register['amount'] = $amount['value'];
+				$link     = $this->cObj->typolink($amount['label'], $this->conf['template.']['typolink.']);
+				$amounts .= $this->cObj->stdWrap($link, $this->conf['template.']['amounts.']['itemWrap.']);
+			}
+			$markerArray['AMOUNTS'] = $this->cObj->stdWrap($amounts, $this->conf['template.']['amounts.']['stdWrap.']);
+		}
 
-		return $this->pi_wrapInBaseClass($content);
+		$GLOBALS['TSFE']->register['amount'] = $this->conf['amount'];
+
+		$inner = $this->cObj->stdWrap("", $this->conf['template.']['innerStdWrap.']);
+		$link = $this->cObj->typolink($inner, $this->conf['template.']['typolink.']);
+		$content = $this->cObj->stdWrap($link, $this->conf['template.']['stdWrap.']);
+		$return_string = $this->cObj->substituteMarkerArray($content, $markerArray, '###|###', 0);
+
+		return $this->pi_wrapInBaseClass($return_string);
+	}
+
+	/**
+	 * Return if the overrideSetup isset
+	 * 
+	 */
+	function isOverride()
+	{
+		return ($this->lConf['overrideSetup'] ? true : false);
 	}
 }
 

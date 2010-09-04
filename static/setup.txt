@@ -1,4 +1,5 @@
 plugin.tx_buymeabeer_pi1 {
+
 	donateUrl = {$plugin.tx_buymeabeer_pi1.donateUrl}
 	business = {$plugin.tx_buymeabeer_pi1.business}
 	currencyCode = {$plugin.tx_buymeabeer_pi1.currencyCode}
@@ -6,6 +7,17 @@ plugin.tx_buymeabeer_pi1 {
 	returnUrl = {$plugin.tx_buymeabeer_pi1.returnUrl}
 	itemName = {$plugin.tx_buymeabeer_pi1.itemName}
 	donateText = {$plugin.tx_buymeabeer_pi1.donateText}
+
+	#amounts {
+	#	10 {
+	#		value = 10
+	#		label = One Beer
+	#	}
+	#	20 {
+	#		value = 20
+	#		label = Two Beer
+	#	}
+	#}
 
 	template {
 		typolink {
@@ -15,16 +27,25 @@ plugin.tx_buymeabeer_pi1 {
 				10.data = register:donateUrl
 	
 				20 = TEXT
-				20.data = register:business
-				20.wrap = &business=|
+				20 {
+					data = register:business
+					wrap = &business=|
+					required = 1
+				}
 	
 				30 = TEXT
-				30.data = register:currencyCode
-				30.wrap = &currency_code=|
+				30 {
+					data = register:currencyCode
+					wrap = &currency_code=|
+					required = 1
+				}
 	
 				40 = TEXT
-				40.data = register:amount
-				40.wrap = &amount=|
+				40 {
+					data = register:amount
+					wrap = &amount=|
+					required = 1
+				}
 	
 				50 = COA
 				50 {
@@ -32,35 +53,62 @@ plugin.tx_buymeabeer_pi1 {
 					10.data = getIndpEnv:TYPO3_SITE_URL
 					10.rawUrlEncode = 1
 					20 = TEXT
-					20.typolink {
-						enable = 1
-						parameter.data = register:returnUrl
-						returnLast = url
+					20 {
+						typolink {
+							enable = 1
+							parameter.data = register:returnUrl
+							returnLast = url
+						}
+						rawUrlEncode = 1
 					}
-					20.rawUrlEncode = 1
 					wrap = &return=|
+					required = 1
 				}
 	
 				60 = TEXT
-				60.data = register:itemName
-				60.rawUrlEncode = 1
-				60.wrap = &item_name=|
+				60 {
+					data = register:itemName
+					rawUrlEncode = 1
+					wrap = &item_name=|
+					required = 1
+				}
+			}
+		}
+		amounts {
+			itemWrap {
+				wrap = <li> | </li>
+				required = 1
+			}
+			stdWrap {
+				wrap = <ul> | </ul>
+				required = 1
 			}
 		}
 		innerStdWrap {
 			dataWrap = <strong>{register:donateText}|</strong>
 		}
 		stdWrap {
-			dataWrap = |
+			dataWrap = <div class="buymeabeer_main"> | </div>###AMOUNTS###
 		}
 	}
 	_CSS_DEFAULT_STYLE (
 .tx-buymeabeer-pi1 {  }
-.tx-buymeabeer-pi1 a {
-  display: block;
-  padding: 5px 5px 5px 64px;
-  background: transparent url(../typo3conf/ext/buymeabeer/res/images/beer.png) no-repeat 0 0;
-  height: 64px;
+.tx-buymeabeer-pi1 .buymeabeer_main a {
+	display: block;
+	padding: 5px 5px 5px 64px;
+	background: transparent url(../typo3conf/ext/buymeabeer/res/images/beer.png) no-repeat 0 0;
+	height: 64px;
+}
+.tx-buymeabeer-pi1 ul {
+	margin: 0;
+	padding: 0;
+}
+.tx-buymeabeer-pi1 li {
+	list-style: none;
+}
+.tx-buymeabeer-pi1 li a {
+	display: block;
+	padding: 2px 0px 2px 64px;
 }
 	)
 }
