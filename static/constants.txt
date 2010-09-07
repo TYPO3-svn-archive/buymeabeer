@@ -1,24 +1,46 @@
 plugin.tx_buymeabeer_pi1 {
 
-	# cat=plugin.tx_buymeabeer/enable/010; type=string; label=Base URL for donating: For PayPal https://www.paypal.com/cgi-bin/webscr?cmd=_xclick
+	# cat=plugin.tx_buymeabeer/enable/010; type=boolean; label=jQuery noConflict: Use jQuery in noConflict mode
+	jQueryNoConflict = 0
+
+	# cat=plugin.tx_buymeabeer/enable/020; type=boolean; label=Javascript in Footer: If set, the Javascript will be rendered in Footer
+	jsInFooter = 0
+
+	# cat=plugin.tx_buymeabeer/enable/030; type=boolean; label=Minify Javascript: If set, the Javascript will be minified
+	jsMinify = 0
+
+
+
+	# cat=plugin.tx_buymeabeer/file/010; type=file[js]; label=jQuery Library: Location of the jQuery Lib
+	file.jQueryLibrary = EXT:buymeabeer/res/jquery/js/jquery-1.4.2.min.js
+
+	# cat=plugin.tx_buymeabeer/file/020; type=file[js]; label=jQuery Easing: Location of the jQuery Easing
+	file.jQueryEasing = EXT:buymeabeer/res/jquery/js/jquery.easing-1.3.js
+
+	# cat=plugin.tx_buymeabeer/file/030; type=file[js]; label=JS-Template file: Location of the used template for JS
+	file.templateFileJS = EXT:buymeabeer/pi1/tx_buymeabeer_pi1.js
+
+
+
+	# cat=plugin.tx_buymeabeer/typo/010; type=string; label=Base URL for donating: For PayPal https://www.paypal.com/cgi-bin/webscr?cmd=_xclick
 	donateUrl = https://www.paypal.com/cgi-bin/webscr?cmd=_xclick
 
-	# cat=plugin.tx_buymeabeer/enable/020; type=string; label=Accountname (Email)
+	# cat=plugin.tx_buymeabeer/typo/020; type=string; label=Accountname (Email)
 	business = 
 
-	# cat=plugin.tx_buymeabeer/enable/030; type=string; label=Currency for donation
+	# cat=plugin.tx_buymeabeer/typo/030; type=string; label=Currency for donation
 	currencyCode = EUR
 
-	# cat=plugin.tx_buymeabeer/enable/040; type=int; label=Amount of donation
+	# cat=plugin.tx_buymeabeer/typo/040; type=int; label=Amount of donation
 	amount = 3
 
-	# cat=plugin.tx_buymeabeer/enable/050; type=string; label=Return URL after donation: Will be used as parameter in typolink, so you can use site id's
+	# cat=plugin.tx_buymeabeer/typo/050; type=string; label=Return URL after donation: Will be used as parameter in typolink, so you can use site id's
 	returnUrl = 
 
-	# cat=plugin.tx_buymeabeer/enable/060; type=string; label=Name of the donation
+	# cat=plugin.tx_buymeabeer/typo/060; type=string; label=Name of the donation
 	itemName = 
 
-	# cat=plugin.tx_buymeabeer/typo/010; type=string; label=Donation text
+	# cat=plugin.tx_buymeabeer/typo/070; type=string; label=Donation text
 	donateText = If you like this site, <br/><strong>buy me a beer</strong>
 }
 

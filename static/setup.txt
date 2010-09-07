@@ -1,5 +1,13 @@
 plugin.tx_buymeabeer_pi1 {
 
+	jQueryNoConflict = {$plugin.tx_buymeabeer_pi1.jQueryNoConflict}
+	jsInFooter = {$plugin.tx_buymeabeer_pi1.jsInFooter}
+	jsMinify = {$plugin.tx_buymeabeer_pi1.jsMinify}
+
+	jQueryLibrary = {$plugin.tx_buymeabeer_pi1.file.jQueryLibrary}
+	jQueryEasing = {$plugin.tx_buymeabeer_pi1.file.jQueryEasing}
+	templateFileJS = {$plugin.tx_buymeabeer_pi1.file.templateFileJS}
+
 	donateUrl = {$plugin.tx_buymeabeer_pi1.donateUrl}
 	business = {$plugin.tx_buymeabeer_pi1.business}
 	currencyCode = {$plugin.tx_buymeabeer_pi1.currencyCode}
@@ -25,28 +33,28 @@ plugin.tx_buymeabeer_pi1 {
 			parameter.cObject {
 				10 = TEXT
 				10.data = register:donateUrl
-	
+
 				20 = TEXT
 				20 {
 					data = register:business
 					wrap = &business=|
 					required = 1
 				}
-	
+
 				30 = TEXT
 				30 {
 					data = register:currencyCode
 					wrap = &currency_code=|
 					required = 1
 				}
-	
+
 				40 = TEXT
 				40 {
 					data = register:amount
 					wrap = &amount=|
 					required = 1
 				}
-	
+
 				50 = COA
 				50 {
 					10 = TEXT
@@ -64,7 +72,7 @@ plugin.tx_buymeabeer_pi1 {
 					wrap = &return=|
 					required = 1
 				}
-	
+
 				60 = TEXT
 				60 {
 					data = register:itemName
@@ -73,6 +81,7 @@ plugin.tx_buymeabeer_pi1 {
 					required = 1
 				}
 			}
+			ATagParams = class="external"
 		}
 		amounts {
 			itemWrap {
@@ -80,7 +89,7 @@ plugin.tx_buymeabeer_pi1 {
 				required = 1
 			}
 			stdWrap {
-				wrap = <ul> | </ul>
+				wrap = <ul class="buymeabeer_amounts"> | </ul>
 				required = 1
 			}
 		}
@@ -88,7 +97,7 @@ plugin.tx_buymeabeer_pi1 {
 			dataWrap = <strong>{register:donateText}|</strong>
 		}
 		stdWrap {
-			dataWrap = <div class="buymeabeer_main"> | </div>###AMOUNTS###
+			dataWrap = <div id="{register:key}"><div class="buymeabeer_main"> | </div>###AMOUNTS###</div>
 		}
 	}
 	_CSS_DEFAULT_STYLE (
