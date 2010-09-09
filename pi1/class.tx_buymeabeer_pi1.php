@@ -178,7 +178,7 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 
 		// The template for JS
 		if (! $this->templateFileJS = $this->cObj->fileResource($this->conf['templateFileJS'])) {
-			$this->templateFileJS = $this->cObj->fileResource("EXT:buymeabeer/pi1/tx_buymeabeer_pi1.js");
+			$this->templateFileJS = $this->cObj->fileResource("EXT:buymeabeer/res/tx_buymeabeer_pi1.js");
 		}
 		// get the Template of the Javascript
 		if (! $templateCode = trim($this->cObj->getSubpart($this->templateFileJS, "###TEMPLATE_JS###"))) {
@@ -207,8 +207,9 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 		);
 		if (is_array($this->conf['amounts.'])) {
 			foreach ($this->conf['amounts.'] as $amount) {
-				$GLOBALS['TSFE']->register['amount'] = $amount['value'];
-				$link     = $this->cObj->typolink($amount['label'], $this->conf['template.']['typolink.']);
+				$GLOBALS['TSFE']->register['amount'] = $this->cObj->stdWrap($amount['value'], $amount['value.']);
+				$label    = $this->cObj->stdWrap($amount['label'], $amount['label.']);
+				$link     = $this->cObj->typolink($label, $this->conf['template.']['typolink.']);
 				$amounts .= $this->cObj->stdWrap($link, $this->conf['template.']['amounts.']['itemWrap.']);
 			}
 			$markerArray['AMOUNTS'] = $this->cObj->stdWrap($amounts, $this->conf['template.']['amounts.']['stdWrap.']);
