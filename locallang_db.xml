@@ -11,6 +11,7 @@
 			<label index="tt_content.pi_flexform.business">Accountname (Email)</label>
 			<label index="tt_content.pi_flexform.currencyCode">Currency of donation</label>
 			<label index="tt_content.pi_flexform.amount">Amount of donation</label>
+			<label index="tt_content.pi_flexform.more_amounts">More amounts</label>
 			<label index="tt_content.pi_flexform.amount_value">Amount</label>
 			<label index="tt_content.pi_flexform.amount_label">Label</label>
 			<label index="tt_content.pi_flexform.returnUrl">Return URL after donation</label>
@@ -24,6 +25,7 @@
 			<label index="tt_content.pi_flexform.business">Account-Name (E-Mail)</label>
 			<label index="tt_content.pi_flexform.currencyCode">Währung der Spende</label>
 			<label index="tt_content.pi_flexform.amount">Spendengrösse</label>
+			<label index="tt_content.pi_flexform.more_amounts">Andere Spenden</label>
 			<label index="tt_content.pi_flexform.amount_value">Betrag</label>
 			<label index="tt_content.pi_flexform.amount_label">Anzeige</label>
 			<label index="tt_content.pi_flexform.returnUrl">Aufruf nach der Spende</label>

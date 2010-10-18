@@ -79,13 +79,13 @@
 						</TCEforms>
 					</amount>
 					<amounts>
+						<tx_templavoila>
+							<title>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.more_amounts</title>
+						</tx_templavoila>
 						<type>array</type>
 						<section>1</section>
 						<el>
 							<data>
-								<TCEforms>
-									<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.amount</label>
-								</TCEforms>
 								<type>array</type>
 								<el>
 									<value>
