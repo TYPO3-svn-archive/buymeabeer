@@ -123,7 +123,18 @@
 							<config>
 								<type>input</type>
 								<size>50</size>
-								<eval>string</eval>
+								<max>255</max>
+								<eval>trim</eval>
+								<wizards>
+									<_PADDING>2</_PADDING>
+									<link>
+										<type>popup</type>
+										<title>Link</title>
+										<icon>link_popup.gif</icon>
+										<script>browse_links.php?mode=wizard</script>
+										<JSopenParams>height=500,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</link>
+								</wizards>
 							</config>
 						</TCEforms>
 					</returnUrl>
@@ -152,5 +163,122 @@
 				</el>
 			</ROOT>
 		</general>
+		<animation>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.sheet_animation</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<transition>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.transition</label>
+							<config>
+								<type>select</type>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.from_ts</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">Swing</numIndex>
+										<numIndex index="1">swing</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">Linear</numIndex>
+										<numIndex index="1">linear</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">Quad</numIndex>
+										<numIndex index="1">Quad</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">Cubic</numIndex>
+										<numIndex index="1">Cubic</numIndex>
+									</numIndex>
+									<numIndex index="5" type="array">
+										<numIndex index="0">Quart</numIndex>
+										<numIndex index="1">Quart</numIndex>
+									</numIndex>
+									<numIndex index="6" type="array">
+										<numIndex index="0">Quint</numIndex>
+										<numIndex index="1">Quint</numIndex>
+									</numIndex>
+									<numIndex index="7" type="array">
+										<numIndex index="0">Sine</numIndex>
+										<numIndex index="1">Sine</numIndex>
+									</numIndex>
+									<numIndex index="8" type="array">
+										<numIndex index="0">Expo</numIndex>
+										<numIndex index="1">Expo</numIndex>
+									</numIndex>
+									<numIndex index="9" type="array">
+										<numIndex index="0">Circ</numIndex>
+										<numIndex index="1">Circ</numIndex>
+									</numIndex>
+									<numIndex index="10" type="array">
+										<numIndex index="0">Back</numIndex>
+										<numIndex index="1">Back</numIndex>
+									</numIndex>
+									<numIndex index="11" type="array">
+										<numIndex index="0">Bounce</numIndex>
+										<numIndex index="1">Bounce</numIndex>
+									</numIndex>
+									<numIndex index="12" type="array">
+										<numIndex index="0">Elastic</numIndex>
+										<numIndex index="1">Elastic</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</transition>
+					<transitionDir>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.transitionDir</label>
+							<config>
+								<type>select</type>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.from_ts</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">In</numIndex>
+										<numIndex index="1">In</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">Out</numIndex>
+										<numIndex index="1">Out</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">InOut</numIndex>
+										<numIndex index="1">InOut</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</transitionDir>
+					<transitionDuration>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:buymeabeer/locallang_db.xml:tt_content.pi_flexform.transitionDuration</label>
+							<config>
+								<type>input</type>
+								<size>6</size>
+								<max>6</max>
+								<default>3000</default>
+								<eval>int,nospace</eval>
+							</config>
+						</TCEforms>
+					</transitionDuration>
+				</el>
+			</ROOT>
+		</animation>
 	</sheets>
 </T3DataStructure>

@@ -18,6 +18,10 @@ plugin.tx_buymeabeer_pi1 {
 	itemName = {$plugin.tx_buymeabeer_pi1.itemName}
 	donateText = {$plugin.tx_buymeabeer_pi1.donateText}
 
+	transition = {$plugin.tx_buymeabeer_pi1.transition}
+	transitionDir = {$plugin.tx_buymeabeer_pi1.transitionDir}
+	transitionDuration = {$plugin.tx_buymeabeer_pi1.transitionDuration}
+
 	#amounts {
 	#	10 {
 	#		value = 10

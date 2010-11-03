@@ -18,6 +18,12 @@
 			<label index="tt_content.pi_flexform.itemName">Name of the donation</label>
 			<label index="tt_content.pi_flexform.donateText">Donation text</label>
 			<label index="tt_content.pi_flexform.overrideSetup">Override setup even width empty values</label>
+			<label index="tt_content.pi_flexform.sheet_animation">Animation</label>
+			<label index="tt_content.pi_flexform.transition">Type of transition</label>
+			<label index="tt_content.pi_flexform.transitionDir">Direction of transition</label>
+			<label index="tt_content.pi_flexform.transitionDuration">Duration of transition (ms)</label>
+			
+			<label index="tt_content.pi_flexform.from_ts">From Typoscript</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="tt_content.list_type_pi1">Donate</label>
@@ -32,6 +38,12 @@
 			<label index="tt_content.pi_flexform.itemName">Name der Spende</label>
 			<label index="tt_content.pi_flexform.donateText">Spenden Text</label>
 			<label index="tt_content.pi_flexform.overrideSetup">Setup auch mit leeren Werten überschreiben</label>
+			<label index="tt_content.pi_flexform.sheet_animation">Animation</label>
+			<label index="tt_content.pi_flexform.transition">Art der Bewegung</label>
+			<label index="tt_content.pi_flexform.transitionDir">Richtung der Bewegung</label>
+			<label index="tt_content.pi_flexform.transitionDuration">Dauer der Bewegung (ms)</label>
+			
+			<label index="tt_content.pi_flexform.from_ts">Von Typoscript</label>
 		</languageKey>
 	</data>
 </T3locallang>

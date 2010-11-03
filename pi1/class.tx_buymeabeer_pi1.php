@@ -129,6 +129,14 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 			if ($this->lConf['donateText'] || $this->isOverride() === true) {
 				$this->conf['donateText'] = nl2br($this->lConf['donateText']);
 			}
+			// Animation
+			if ($this->lConf['transition']) {
+				$this->conf['transition'] = $this->lConf['transition'];
+			}
+			if ($this->lConf['transitionDir']) {
+				$this->conf['transitionDir'] = $this->lConf['transitionDir'];
+			}
+			$this->conf['transitionDuration'] = $this->lConf['transitionDuration'];
 		}
 
 		return $this->pi_wrapInBaseClass($this->parseTemplate());

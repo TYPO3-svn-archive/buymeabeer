@@ -48,5 +48,16 @@ plugin.tx_buymeabeer_pi1 {
 
 	# cat=plugin.tx_buymeabeer/typo/070; type=string; label=Donation text
 	donateText = If you like this site, <br/><strong>buy me a beer</strong>
+
+
+
+	# cat=plugin.tx_buymeabeer/typo/080; type=options[swing,linear,Quad,Cubic,Quart,Quint,Sine,Expo,Circ,Back,Bounce,Elastic]; label=Transition:
+	transition = swing
+
+	# cat=plugin.tx_buymeabeer/typo/090; type=options[In,Out,InOut]; label=Direction of transition:
+	transitionDir = Out
+
+	# cat=plugin.tx_buymeabeer/typo/100; type=int; label=Duration of transition (in ms):
+	transitionDuration = 3000
 }
 
