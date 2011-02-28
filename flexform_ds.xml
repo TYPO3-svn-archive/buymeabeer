@@ -39,7 +39,7 @@
 								<type>input</type>
 								<size>6</size>
 								<max>6</max>
-								<eval>string</eval>
+								<eval>nospace</eval>
 							</config>
 						</TCEforms>
 					</currencyCode>
@@ -74,7 +74,7 @@
 								<type>input</type>
 								<size>6</size>
 								<max>6</max>
-								<eval>string</eval>
+								<eval>nospace</eval>
 							</config>
 						</TCEforms>
 					</amount>
@@ -145,7 +145,7 @@
 							<config>
 								<type>input</type>
 								<size>50</size>
-								<eval>string</eval>
+								<eval>nospace</eval>
 							</config>
 						</TCEforms>
 					</itemName>
@@ -272,8 +272,9 @@
 								<type>input</type>
 								<size>6</size>
 								<max>6</max>
-								<default>3000</default>
-								<eval>int,nospace</eval>
+								<default></default>
+								<checkbox>0</checkbox>
+								<eval>int</eval>
 							</config>
 						</TCEforms>
 					</transitionDuration>
