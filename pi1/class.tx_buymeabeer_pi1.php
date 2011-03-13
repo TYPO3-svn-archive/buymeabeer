@@ -136,7 +136,9 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 			if ($this->lConf['transitionDir']) {
 				$this->conf['transitionDir'] = $this->lConf['transitionDir'];
 			}
-			$this->conf['transitionDuration'] = $this->lConf['transitionDuration'];
+			if ($this->lConf['transitionDuration']) {
+				$this->conf['transitionDuration'] = $this->lConf['transitionDuration'];
+			}
 		}
 
 		return $this->pi_wrapInBaseClass($this->parseTemplate());
@@ -192,9 +194,19 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 		if (! $templateCode = trim($this->cObj->getSubpart($this->templateFileJS, "###TEMPLATE_JS###"))) {
 			$templateCode = "alert('Template TEMPLATE_JS is missing')";
 		}
+
 		// set the key
 		$markerArray = array();
 		$markerArray["KEY"] = $this->getContentKey();
+		// Define the transition
+		if (in_array($this->conf['transition'], array('linear', 'swing'))) {
+			$markerArray['EASING'] = $this->conf['transition'];
+		} elseif ($this->conf['transitionDir'] && $this->conf['transition']) {
+			$markerArray['EASING'] = "ease{$this->conf['transitionDir']}{$this->conf['transition']}";
+		}
+		// Set the duration
+		$markerArray['SPEED'] = $this->conf['transitionDuration']>0 ? $this->conf['transitionDuration'] : '0';
+
 		$templateCode = $this->cObj->substituteMarkerArray($templateCode, $markerArray, '###|###', 0);
 
 		$this->addJS($jQueryNoConflict . $templateCode);

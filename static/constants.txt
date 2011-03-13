@@ -58,6 +58,6 @@ plugin.tx_buymeabeer_pi1 {
 	transitionDir = Out
 
 	# cat=plugin.tx_buymeabeer/typo/100; type=int; label=Duration of transition (in ms):
-	transitionDuration = 3000
+	transitionDuration = 500
 }
 
