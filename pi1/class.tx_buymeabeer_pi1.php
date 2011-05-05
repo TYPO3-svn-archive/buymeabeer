@@ -42,21 +42,21 @@ if (t3lib_extMgm::isLoaded('t3jquery')) {
  */
 class tx_buymeabeer_pi1 extends tslib_pibase
 {
-	var $prefixId      = 'tx_buymeabeer_pi1';		// Same as class name
-	var $scriptRelPath = 'pi1/class.tx_buymeabeer_pi1.php';	// Path to this script relative to the extension dir.
-	var $extKey        = 'buymeabeer';	// The extension key.
-	var $pi_checkCHash = true;
-	var $lConf = array();
-	var $contentKey = null;
-	var $jsFiles = array();
-	var $js = array();
-	var $cssFiles = array();
-	var $css = array();
-	var $images = array();
-	var $hrefs = array();
-	var $captions = array();
-	var $imageDir = 'uploads/tx_buymeabeer/';
-	var $type = 'normal';
+	public $prefixId      = 'tx_buymeabeer_pi1';		// Same as class name
+	public $scriptRelPath = 'pi1/class.tx_buymeabeer_pi1.php';	// Path to this script relative to the extension dir.
+	public $extKey        = 'buymeabeer';	// The extension key.
+	public $pi_checkCHash = true;
+	protected $lConf = array();
+	protected $contentKey = null;
+	protected $jsFiles = array();
+	protected $js = array();
+	protected $cssFiles = array();
+	protected $css = array();
+	protected $images = array();
+	protected $hrefs = array();
+	protected $captions = array();
+	protected $imageDir = 'uploads/tx_buymeabeer/';
+	protected $type = 'normal';
 
 	/**
 	 * The main method of the PlugIn
@@ -65,7 +65,7 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 	 * @param	array		$conf: The PlugIn configuration
 	 * @return	The content that is displayed on the website
 	 */
-	function main($content, $conf)
+	public function main($content, $conf)
 	{
 		$this->conf = $conf;
 		$this->pi_setPiVarDefaults();
@@ -79,30 +79,33 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 		$pageID = false;
 		if ($this->cObj->data['list_type'] == $this->extKey.'_pi1') {
 			$this->type = 'normal';
+
 			// It's a content, all data from flexform
-			// Set the Flexform information
-			$this->pi_initPIflexForm();
-			$piFlexForm = $this->cObj->data['pi_flexform'];
-			foreach ($piFlexForm['data'] as $sheet => $data) {
-				foreach ($data as $lang => $value) {
-					foreach ($value as $key => $val) {
-						if ($key == 'amounts') {
-							// special for the amounts
-							$this->lConf['amounts'] = array();
-							if (is_array($val['el'])) {
-								foreach ($val['el'] as $amount) {
-									$this->lConf['amounts'][] = array(
-										'value'   => $amount['data']['el']['value']['vDEF'],
-										'label' => $amount['data']['el']['label']['vDEF'],
-									);
-								}
-							}
-						} else {
-							$this->lConf[$key] = $this->pi_getFFvalue($piFlexForm, $key, $sheet);
-						}
+
+			$this->lConf['overrideSetup'] = $this->getFlexformData('general', 'overrideSetup');
+			$this->lConf['business']      = $this->getFlexformData('general', 'business');
+			$this->lConf['currencyCode']  = $this->getFlexformData('general', 'currencyCode');
+			$this->lConf['amount']        = $this->getFlexformData('general', 'amount');
+			$this->lConf['returnUrl']     = $this->getFlexformData('general', 'returnUrl');
+			$this->lConf['itemName']      = $this->getFlexformData('general', 'itemName');
+			$this->lConf['donateText']    = $this->getFlexformData('general', 'donateText');
+
+			$amounts = $this->getFlexformData('general', 'amounts');
+			$this->lConf['amounts'] = array();
+			if (isset($amounts['el']) && count($amounts['el']) > 0) {
+				foreach ($amounts['el'] as $elKey => $el) {
+					if (is_numeric($elKey)) {
+						$this->lConf['amounts'][] = array(
+							'value' => $el['data']['el']['value']['vDEF'],
+							'label' => $el['data']['el']['label']['vDEF'],
+						);
 					}
 				}
 			}
+
+			$this->lConf['transition']         = $this->getFlexformData('animation', 'transition');
+			$this->lConf['transitionDir']      = $this->getFlexformData('animation', 'transitionDir');
+			$this->lConf['transitionDuration'] = $this->getFlexformData('animation', 'transitionDuration');
 
 			// define the key of the element
 			$this->setContentKey('buymeabeer_c' . $this->cObj->data['uid']);
@@ -145,16 +148,18 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 	}
 
 	/**
-	 * Return if the overrideSetup isset
+	 * Return true if the overrideSetup isset
 	 * 
+	 * @return boolean
 	 */
-	function isOverride()
+	public function isOverride()
 	{
 		return ($this->lConf['overrideSetup'] ? true : false);
 	}
 
 	/**
 	 * Set the contentKey
+	 * 
 	 * @param string $contentKey
 	 */
 	public function setContentKey($contentKey=null)
@@ -164,6 +169,7 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 
 	/**
 	 * Get the contentKey
+	 * 
 	 * @return string
 	 */
 	public function getContentKey()
@@ -177,7 +183,7 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 	 * @param $data
 	 * @return string
 	 */
-	function parseTemplate()
+	public function parseTemplate()
 	{
 		// define the jQuery mode and function
 		if ($this->conf['jQueryNoConflict']) {
@@ -250,7 +256,7 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 	 *
 	 * @return void
 	 */
-	function addResources()
+	protected function addResources()
 	{
 		// checks if t3jquery is loaded
 		if (T3JQUERY === true) {
@@ -373,7 +379,7 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 	 * @param string $path
 	 * return string
 	 */
-	function getPath($path="")
+	protected function getPath($path="")
 	{
 		return $GLOBALS['TSFE']->tmpl->getFileName($path);
 	}
@@ -385,7 +391,7 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 	 * @param boolean $first
 	 * @return void
 	 */
-	function addJsFile($script="", $first=false)
+	protected function addJsFile($script="", $first=false)
 	{
 		$script = t3lib_div::fixWindowsFilePath($script);
 		if ($this->getPath($script) && ! in_array($script, $this->jsFiles)) {
@@ -403,7 +409,7 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 	 * @param string $script
 	 * @return void
 	 */
-	function addJS($script="")
+	protected function addJS($script="")
 	{
 		if (! in_array($script, $this->js)) {
 			$this->js[] = $script;
@@ -416,7 +422,7 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 	 * @param string $script
 	 * @return void
 	 */
-	function addCssFile($script="")
+	protected function addCssFile($script="")
 	{
 		$script = t3lib_div::fixWindowsFilePath($script);
 		if ($this->getPath($script) && ! in_array($script, $this->cssFiles)) {
@@ -430,7 +436,7 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 	 * @param string $script
 	 * @return void
 	 */
-	function addCSS($script="")
+	protected function addCSS($script="")
 	{
 		if (! in_array($script, $this->css)) {
 			$this->css[] = $script;
@@ -442,7 +448,7 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 	 * @param string $key
 	 * @return string
 	 */
-	function getExtensionVersion($key)
+	protected function getExtensionVersion($key)
 	{
 		if (! t3lib_extMgm::isLoaded($key)) {
 			return '';
@@ -450,6 +456,42 @@ class tx_buymeabeer_pi1 extends tslib_pibase
 		$_EXTKEY = $key;
 		include(t3lib_extMgm::extPath($key) . 'ext_emconf.php');
 		return $EM_CONF[$key]['version'];
+	}
+
+	/**
+	 * Extract the requested information from flexform
+	 * @param string $sheet
+	 * @param string $name
+	 * @param boolean $devlog
+	 * @return string
+	 */
+	protected function getFlexformData($sheet='', $name='', $devlog=true)
+	{
+		$this->pi_initPIflexForm();
+		$piFlexForm = $this->cObj->data['pi_flexform'];
+		if (! isset($piFlexForm['data'])) {
+			if ($devlog === true) {
+				t3lib_div::devLog("Flexform Data not set", $this->extKey, 1);
+			}
+			return null;
+		}
+		if (! isset($piFlexForm['data'][$sheet])) {
+			if ($devlog === true) {
+				t3lib_div::devLog("Flexform sheet '{$sheet}' not defined", $this->extKey, 1);
+			}
+			return null;
+		}
+		if (! isset($piFlexForm['data'][$sheet]['lDEF'][$name])) {
+			if ($devlog === true) {
+				t3lib_div::devLog("Flexform Data [{$sheet}][{$name}] does not exist", $this->extKey, 1);
+			}
+			return null;
+		}
+		if (isset($piFlexForm['data'][$sheet]['lDEF'][$name]['vDEF'])) {
+			return $this->pi_getFFvalue($piFlexForm, $name, $sheet);
+		} else {
+			return $piFlexForm['data'][$sheet]['lDEF'][$name];
+		}
 	}
 }
 

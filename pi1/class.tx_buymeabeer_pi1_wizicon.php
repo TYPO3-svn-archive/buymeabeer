@@ -42,16 +42,15 @@ class tx_buymeabeer_pi1_wizicon
 	 * @param	array		$wizardItems: The wizard items
 	 * @return	Modified array with wizard items
 	 */
-	function proc($wizardItems)	{
-		global $LANG;
-
+	public function proc($wizardItems)
+	{
 		$LL = $this->includeLocalLang();
 
 		$wizardItems['plugins_tx_buymeabeer_pi1'] = array(
-			'icon'=>t3lib_extMgm::extRelPath('buymeabeer').'pi1/ce_wiz.png',
-			'title'=>$LANG->getLLL('pi1_title',$LL),
-			'description'=>$LANG->getLLL('pi1_plus_wiz_description',$LL),
-			'params'=>'&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=buymeabeer_pi1'
+			'icon' => t3lib_extMgm::extRelPath('buymeabeer').'pi1/ce_wiz.png',
+			'title' => $GLOBALS['LANG']->getLLL('pi1_title',$LL),
+			'description' => $GLOBALS['LANG']->getLLL('pi1_plus_wiz_description',$LL),
+			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=buymeabeer_pi1'
 		);
 
 		return $wizardItems;
@@ -62,7 +61,8 @@ class tx_buymeabeer_pi1_wizicon
 	 *
 	 * @return	The array with language labels
 	 */
-	function includeLocalLang()	{
+	public function includeLocalLang()
+	{
 		$llFile = t3lib_extMgm::extPath('buymeabeer').'locallang.xml';
 		$LOCAL_LANG = t3lib_div::readLLXMLfile($llFile, $GLOBALS['LANG']->lang);
 
