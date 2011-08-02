@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext "buymeabeer".
 #
-# Auto generated 05-05-2011 21:00
+# Auto generated 02-08-2011 23:41
 #
 # Manual updates:
 # Only the data in the array - everything else is removed by next
@@ -29,19 +29,19 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 1,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '1.0.0',
+	'version' => '1.0.1',
 	'constraints' => array(
 		'depends' => array(
 			'cms' => '',
-			'php' => '5.0.0-5.3.99',
-			'typo3' => '4.3.0-4.5.99',
+			'php' => '5.0.0-0.0.0',
+			'typo3' => '4.3.0-4.99.999',
 		),
 		'conflicts' => array(
 		),
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:19:{s:12:"ext_icon.gif";s:4:"2ddc";s:17:"ext_localconf.php";s:4:"b36c";s:14:"ext_tables.php";s:4:"f95c";s:15:"flexform_ds.xml";s:4:"bdb0";s:13:"locallang.xml";s:4:"9fc0";s:16:"locallang_db.xml";s:4:"9204";s:12:"t3jquery.txt";s:4:"99ee";s:14:"doc/manual.sxw";s:4:"cc25";s:14:"pi1/ce_wiz.png";s:4:"3fca";s:31:"pi1/class.tx_buymeabeer_pi1.php";s:4:"2921";s:39:"pi1/class.tx_buymeabeer_pi1_wizicon.php";s:4:"37be";s:13:"pi1/clear.gif";s:4:"cc11";s:17:"pi1/locallang.xml";s:4:"fe0a";s:24:"res/tx_buymeabeer_pi1.js";s:4:"946d";s:19:"res/images/beer.png";s:4:"d20e";s:33:"res/jquery/js/jquery-1.5.2.min.js";s:4:"e85a";s:34:"res/jquery/js/jquery.easing-1.3.js";s:4:"a6f7";s:20:"static/constants.txt";s:4:"cad1";s:16:"static/setup.txt";s:4:"7375";}',
+	'_md5_values_when_last_written' => 'a:19:{s:12:"ext_icon.gif";s:4:"2ddc";s:17:"ext_localconf.php";s:4:"f70e";s:14:"ext_tables.php";s:4:"e9d4";s:15:"flexform_ds.xml";s:4:"c4d0";s:13:"locallang.xml";s:4:"faf6";s:16:"locallang_db.xml";s:4:"0315";s:12:"t3jquery.txt";s:4:"c68a";s:14:"doc/manual.sxw";s:4:"58dc";s:14:"pi1/ce_wiz.png";s:4:"3fca";s:31:"pi1/class.tx_buymeabeer_pi1.php";s:4:"b357";s:39:"pi1/class.tx_buymeabeer_pi1_wizicon.php";s:4:"b15b";s:13:"pi1/clear.gif";s:4:"cc11";s:17:"pi1/locallang.xml";s:4:"fe0a";s:24:"res/tx_buymeabeer_pi1.js";s:4:"946d";s:19:"res/images/beer.png";s:4:"d20e";s:33:"res/jquery/js/jquery-1.6.2.min.js";s:4:"a1a8";s:34:"res/jquery/js/jquery.easing-1.3.js";s:4:"6516";s:20:"static/constants.txt";s:4:"450f";s:16:"static/setup.txt";s:4:"d7d6";}',
 	'suggests' => array(
 	),
 );
