@@ -145,7 +145,7 @@
 							<config>
 								<type>input</type>
 								<size>50</size>
-								<eval>nospace</eval>
+								<eval>trim</eval>
 							</config>
 						</TCEforms>
 					</itemName>
