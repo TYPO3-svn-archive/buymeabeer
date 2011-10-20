@@ -68,7 +68,7 @@ plugin.tx_buymeabeer_pi1 {
 					10.rawUrlEncode = 1
 					20 = TEXT
 					20 {
-						typolink {
+						stdWrap.typolink {
 							enable = 1
 							parameter.data = register:returnUrl
 							returnLast = url
