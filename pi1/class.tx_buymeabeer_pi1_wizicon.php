@@ -64,7 +64,11 @@ class tx_buymeabeer_pi1_wizicon
 	public function includeLocalLang()
 	{
 		$llFile = t3lib_extMgm::extPath('buymeabeer').'locallang.xml';
-		$LOCAL_LANG = t3lib_div::readLLXMLfile($llFile, $GLOBALS['LANG']->lang);
+		if (class_exists(t3lib_l10n_parser_Llxml)) {
+			$LOCAL_LANG = t3lib_l10n_parser_Llxml::getParsedData($llFile, $GLOBALS['LANG']->lang);
+		} else {
+			$LOCAL_LANG = t3lib_div::readLLXMLfile($llFile, $GLOBALS['LANG']->lang);
+		}
 
 		return $LOCAL_LANG;
 	}
